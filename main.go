@@ -51,10 +51,10 @@ func main() {
 	m, untagged := stat(flowFile, tags)
 
 	fmt.Fprintln(os.Stdout, "Tag | Count")
-	for n, v := range m {
-		fmt.Fprintf(os.Stdout, "%s %d\n", n, v)
+	for name, val := range m {
+		fmt.Fprintf(os.Stdout, "%s %d\n", name, val)
 	}
-	fmt.Fprintf(os.Stdout, "Untagged = %d\n", untagged)
+	fmt.Fprintf(os.Stdout, "untagged = %d\n", untagged)
 
 	fmt.Fprintln(os.Stdout, "Port | Protocol | Count")
 	for _, tag := range tags {
@@ -81,7 +81,10 @@ func buildLookupTable(r io.Reader) ([]tag, error) {
 		if err != nil {
 			return nil, err
 		}
-		a[i].dstPort = port
+
+		if port < 0 || port > 65535 {
+			return nil, fmt.Errorf("invalid port %d", port)
+		}
 
 		if v, exists := ianaProtocolNumbers[strings.ToLower(record[1])]; !exists {
 			return nil, fmt.Errorf("invalid protocol number: %s", record[1])
@@ -89,6 +92,7 @@ func buildLookupTable(r io.Reader) ([]tag, error) {
 			a[i].protocol = v
 		}
 
+		a[i].dstPort = port
 		a[i].name = strings.ToLower(record[2]) // Tag names are case-insensitive.
 	}
 	return a, nil
