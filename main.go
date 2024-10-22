@@ -64,8 +64,8 @@ func main() {
 	}
 }
 
-func buildLookupTable(r io.Reader) ([]tag, error) {
-	parser := csv.NewReader(r)
+func buildLookupTable(in io.Reader) ([]tag, error) {
+	parser := csv.NewReader(in)
 	parser.TrimLeadingSpace = true
 	parser.FieldsPerRecord = 3
 	parser.Comment = '#'
@@ -98,8 +98,8 @@ func buildLookupTable(r io.Reader) ([]tag, error) {
 	return a, nil
 }
 
-func stat(r io.Reader, tags []tag) (map[string]int, int) {
-	parser := csv.NewReader(r)
+func stat(in io.Reader, tags []tag) (map[string]int, int) {
+	parser := csv.NewReader(in)
 	parser.Comma = ' ' // flow.csv doesn't use the comma as the field delimiter.
 	parser.TrimLeadingSpace = true
 
