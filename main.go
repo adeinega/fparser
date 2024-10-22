@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-const FIELD_DST_PORT = 6
-const FIELD_PROTOCOL = 7
+const fieldDstPort = 6
+const fieldProtocol = 7
 
 type tag struct {
 	dstPort  int
@@ -116,13 +116,13 @@ func stat(r io.Reader, tags []tag) (map[string]int, int) {
 			continue // Should be OK to be a bit more resilient (TBD).
 		}
 
-		port, err := strconv.Atoi(record[FIELD_DST_PORT])
+		port, err := strconv.Atoi(record[fieldDstPort])
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			continue //  Should be OK to be a bit more resilient (TBD).
 		}
 
-		protocol, err := strconv.Atoi(record[FIELD_PROTOCOL])
+		protocol, err := strconv.Atoi(record[fieldProtocol])
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			continue //  Should be OK to be a bit more resilient (TBD).
