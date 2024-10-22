@@ -1,6 +1,6 @@
 This tiny GoLang app has zero deps. Note, package [encoding/csv](https://pkg.go.dev/encoding/csv@go1.23.2) is a part of [Standard library](https://pkg.go.dev/std).
 
-How to run it (this isn't a typical way to run GoLang apps)
+How to run it (this isn't a quite typical way to run GoLang apps)
 
 1. `clone the repo`
 2. run
