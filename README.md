@@ -9,5 +9,5 @@ How to run it
 The app process two files ([lookup.csv](lookup.csv) and [flow.csv](flow.csv)), and generates a report to stdout. Any errors in lookup.csv force an app to quit. Minor errors in flow.csv are ignored and get printed out to stderr.
 
 #### Improvements
-1. instead of defining "static" rules for tags in lookup.csv, the app could relatively easily be extended to use the Berkeley Packet Filter, or an equivalent expression language (EL).
+1. instead of defining "static" rules for tags in lookup.csv, the app could relatively easily be extended to use an Expression Language (EL) using the Berkeley Packet Filter syntax, or its equivalent .
 2. the app could be extended to work in two modes for handling errors in flow.csv, for example, _strict_, _relaxed_ and _warn_.
