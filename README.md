@@ -1,10 +1,10 @@
 This tiny GoLang app has zero deps. Note, the [encoding/csv](https://pkg.go.dev/encoding/csv@go1.23.2) package is a part of [Standard library](https://pkg.go.dev/std).
 
 How to run it (this isn't a quite typical way to run GoLang apps)
-1. `clone the repo`
+1. clone the repo
 2. run
-`docker run -it --entrypoint sh -v ${PWD}/:/usr/src -w /usr/src golang:1.23.2-alpine3.20`
-3. and then run `go run .`
+`docker run -it --entrypoint sh -v ${PWD}/:/usr/src -w /usr/src golang:1.23.2-alpine3.20`, and then
+3. run `go run .`
 
 The app takes two CSV files ([lookup.csv](lookup.csv) and [flow.csv](flow.csv)) and generates a report to stdout.
 
