@@ -42,6 +42,11 @@ func TestBuildLookupTable(t *testing.T) {
 			errors.New("invalid protocol number: bla"),
 		},
 		{"6",
+			"string,tcp,sv_P1",
+			nil,
+			errors.New("strconv.Atoi: parsing \"string\": invalid syntax"),
+		},
+		{"7",
 			`# comment
 25,tcp,sv_P1
 68,udp,sv_P2
