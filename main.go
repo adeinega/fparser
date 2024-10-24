@@ -50,16 +50,16 @@ func main() {
 
 	m, untagged := stat(flowFile, tags)
 
-	fmt.Fprintln(os.Stdout, "Tag | Count")
+	fmt.Println("Tag | Count")
 	for name, val := range m {
-		fmt.Fprintf(os.Stdout, "%s %d\n", name, val)
+		fmt.Printf("%s %d\n", name, val)
 	}
-	fmt.Fprintf(os.Stdout, "untagged = %d\n", untagged)
+	fmt.Printf("untagged = %d\n", untagged)
 
-	fmt.Fprintln(os.Stdout, "Port | Protocol | Count")
+	fmt.Println("Port | Protocol | Count")
 	for _, tag := range tags {
 		if tag.count > 0 {
-			fmt.Fprintf(os.Stdout, "%d %d %d\n", tag.dstPort, tag.protocol, tag.count)
+			fmt.Printf("%d %d %d\n", tag.dstPort, tag.protocol, tag.count)
 		}
 	}
 }
